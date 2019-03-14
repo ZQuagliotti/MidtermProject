@@ -8,18 +8,17 @@
 
 main::start();
 
-class main {
+class main{
 
-    static public function start() {
+    static public function start($filename){
 
-        $records = csv::getRecords();
+        $records = csv::getRecords($filename);
         $table = html::generateTable($records);
-        system::printPage($table);
 
     }
 
-
 }
+
 
 class csv{
 
@@ -33,7 +32,7 @@ class csv{
         $records[] = $car;
 
         print_r($records);
-        
+
         return $records;
 
     }
