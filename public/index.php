@@ -30,23 +30,31 @@ class html{
 }
 
 class csv{
+    static public function getRecords($filename){
 
-    static public function getRecords() {
+        $file = fopen($filename,"r");
 
+        $fieldNames = array();
 
-        $make = 'ford';
-        $model = 'taurus';
-        $car = AutomobileFactory::create($make,$model);
+        $count = 0;
 
-        $records[] = $car;
+        while(! feof($file)) {
 
-        print_r($records);
+            $record = fgetcsv($file);
 
+            if($count == 0) {
+                $fieldNames = $record;
+            }else{
+                $records[] = recordFactory::create($fieldNames, $record);
+            }
+            $count++;
+
+        }
+        fclose($file);
         return $records;
 
     }
 }
-
 
 class system{
 
