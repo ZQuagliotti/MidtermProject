@@ -56,11 +56,28 @@ class csv{
     }
 }
 
-class system{
+class record{
 
-    static public function printPage($page){
+    public function __construct(Array $fieldNames = null, $values = null)
+    {
 
-        echo $page;
+        $record = array_combine($fieldNames, $values);
+        foreach ($record as $property => $value){
+            $this->createProperty($property, $value);
+
+        }
+
+
+    }
+
+    public function returnArray(){
+        $array = (array) $this;
+        return $array;
+    }
+
+    public function createProperty($name = 'first', $value = 'keith'){
+
+        $this->{$name} = $value;
 
     }
 
