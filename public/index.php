@@ -19,6 +19,15 @@ class main{
 
 }
 
+class html{
+    public static function generateTable($records){
+
+        foreach ($records as $record){
+            $array = $record->returnArray();
+            print_r($array);
+        }
+    }
+}
 
 class csv{
 
@@ -34,17 +43,6 @@ class csv{
         print_r($records);
 
         return $records;
-
-    }
-}
-
-class html{
-
-    static public function generateTable($records){
-
-        $table = $records;
-
-        return $table;
 
     }
 }
