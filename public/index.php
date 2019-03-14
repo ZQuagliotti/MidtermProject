@@ -6,7 +6,7 @@
  * Time: 17:04
  */
 
-main::start();
+main::start("example.csv");
 
 class main{
 
@@ -84,27 +84,14 @@ class record{
 }
 
 
-class Automobile
-{
-    private $vehicleMake;
-    private $vehicleModel;
+class recordFactory{
 
-    public function __construct($make, $model)
-    {
-        $this->vehicleMake = $make;
-        $this->vehicleModel = $model;
+    public static function create(Array $fieldNames = null, $values = null){
+
+
+        $record = new record($fieldNames, $values);
+
+        return $record;
     }
 
-    public function getMakeAndModel()
-    {
-        return $this->vehicleMake . ' ' . $this->vehicleModel;
-    }
-}
-
-class AutomobileFactory
-{
-    public static function create($make, $model)
-    {
-        return new Automobile($make, $model);
-    }
 }
